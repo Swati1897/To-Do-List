@@ -1,4 +1,3 @@
-<p>task-list works!</p>
 <div class="container-fuild">
     <div class="card">
         <div class="card-header">
@@ -47,14 +46,14 @@
                                         </td>
                                         <td> <a> {{TaskDetail.assignedTo}} </a></td>
                                         <td> {{ TaskDetail.statusData}}</td>
-                                        <td> {{ TaskDetail.dueData}} </td>
+                                        <td> {{ TaskDetail.dueDate}} </td>
                                         <td> {{ TaskDetail.priorityWise}}  </td>
                                         <td> {{ TaskDetail.descriptionData}}  </td>
                                         <td><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                                 aria-expanded="false"></a>
                                             <ul class="dropdown-menu bg-warning text-dark">
                                                 <li><button type="button" class="btn btn-warning"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal1"  (click)="editProfile(TaskDetail)">
                                                         Edit
                                                     </button></li>
                                                 <li><button type="button" class="btn btn-warning" data-bs-toggle="modal"

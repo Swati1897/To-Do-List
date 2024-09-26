@@ -23,8 +23,8 @@ export class TaskServiceService {
     return this.http.post(`${this.TaskURL}`, task_data);
   }
 
-  updateTask(taskBody: any):Observable<any>{
-    return this.http.put(`${this.TaskURL}`, taskBody);
+  updateTask(taskBody: any, id:number):Observable<any>{
+    return this.http.put(`${this.TaskURL}/${id}`, taskBody);
 }
 
   deleteTask(id :number){

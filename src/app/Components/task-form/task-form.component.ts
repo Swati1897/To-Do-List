@@ -45,6 +45,7 @@ export class TaskFormComponent  implements OnInit{
     this.taskService.addTask(body).subscribe((data:any)=>{
       console.log("Add Task data:....", data);
       this.TaskResult = data;
+      this.TaskForm.reset();
       this.router.navigate(['../view-task'], {relativeTo: this.currentRouter})
     }, (error)=>{
       console.log("Error Occure !", error);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskServiceService } from 'src/app/Services/task-service.service';
 
@@ -12,11 +12,23 @@ export class TaskListComponent implements OnInit{
   show : boolean = true;
   TaskDetails: any[] =[];
   deleteData: any;
-  updateAllData: any[] =[]
+  updateData: any;
+
+  updateAllData:any=[];
 
   updateTaskForm! : FormGroup;
   
-  constructor(private taskService: TaskServiceService) { }
+  constructor(private taskService: TaskServiceService,
+              private formBuilder : FormBuilder) { 
+              
+              this.updateTaskForm = this.formBuilder.group({
+                  assignedTo:[''],
+                  statusData:[''],
+                  dueDate:[''],
+                  priorityWise:[''],
+                  descriptionData:['']
+                  })
+              }
   
   ngOnInit(): void { 
     this.getData();
@@ -32,9 +44,14 @@ export class TaskListComponent implements OnInit{
     })   
   }
 
-  onUpdateData():void{
-    console.log(this.updateTaskForm.value);
+  editProfile(data :any){
+    console.log(data);  // value 
+    this.updateData = data;
+    this.updateTaskForm.patchValue(this.updateData);
+  }
 
+  onUpdateData():void{
+    
     const body={
       id: this.updateTaskForm.value.id,
       assignedTo: this.updateTaskForm.value.assignedTo, 
@@ -43,9 +60,10 @@ export class TaskListComponent implements OnInit{
       priorityWise: this.updateTaskForm.value.priorityWise,
       descriptionData: this.updateTaskForm.value.descriptionData
     };
-    this.taskService.updateTask(body).subscribe((result: any)=>{
+    this.taskService.updateTask(body, this.updateData.id).subscribe((result: any)=>{
       this.updateAllData = result;
       this.showMessage();
+      this.updateTaskForm.reset();
     });
     this.getData();
   }

@@ -3,15 +3,15 @@
     {
       "assignedTo": "User 1",
       "statusData": "In Progres",
-      "dueData": "2024-09-13",
-      "priorityWise": "High",
-      "descriptionData": "This task is good",
+      "dueDate": "2024-09-12",
+      "priorityWise": "Normal",
+      "descriptionData": "This task is good.",
       "id": 1
     },
     {
       "assignedTo": "User 4",
       "statusData": "In Progres",
-      "dueData": "2024-09-13",
+      "dueDate": "2024-09-13",
       "priorityWise": "Normal",
       "descriptionData": "This task is good",
       "id": 2
@@ -19,34 +19,34 @@
     {
       "assignedTo": "User 1",
       "statusData": "Completed",
-      "dueData": "2024-09-06",
-      "priorityWise": "Low",
+      "dueDate": "2024-09-04",
+      "priorityWise": "Normal",
       "descriptionData": "This task is good",
       "id": 3
-  },
-  {
+    },
+    {
       "assignedTo": "User 2",
       "statusData": "In Progres",
-      "dueData": "2024-09-12",
-      "priorityWise": "Low",
+      "dueDate": "2024-09-01",
+      "priorityWise": "High",
       "descriptionData": "This task is good",
       "id": 4
-  },
-  {
+    },
+    {
       "assignedTo": "User 2",
       "statusData": "In Progres",
-      "dueData": "2024-09-10",
+      "dueDate": "2024-09-10",
       "priorityWise": "Low",
       "descriptionData": "This task is good",
       "id": 5
-  },
-  {
+    },
+    {
       "assignedTo": "User 1",
       "statusData": "In Progres",
-      "dueData": "2024-09-13",
+      "dueDate": "2024-09-13",
       "priorityWise": "High",
       "descriptionData": "This task is good",
       "id": 6
-  }
+    }
   ]
 }
