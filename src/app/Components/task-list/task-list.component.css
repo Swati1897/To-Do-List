@@ -1,0 +1,23 @@
+.checklist{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #BE2538;
+    background-color: #BE2538; 
+    color: white;
+    border-radius: 6px;
+}
+.btn{
+    padding: 10px 25px;
+}
+.magnifying-glass{
+    position: absolute;
+    float: right;
+    margin: 10px;
+    padding-left: 180px;
+}
+.search{
+    position: absolute;
+}
+.Number{
+    width: 80px;
+}

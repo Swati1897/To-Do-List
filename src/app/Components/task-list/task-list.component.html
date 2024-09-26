@@ -1,0 +1,194 @@
+<p>task-list works!</p>
+<div class="container-fuild">
+    <div class="card">
+        <div class="card-header">
+            <div class="left" style="float: left;">
+                <i class="fa-solid fa-list-check checklist"></i>
+                <div style="float: right;">
+                    <h5> Tasks </h5>
+                    <p>All Tasks</p>
+                </div>
+                <p><small> {{TaskDetails.length}} records</small></p>
+            </div>
+            <div style="float: right;">
+                <div class="btn-group" style="margin-bottom: 6px;">
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        New Task
+                    </button>
+                    <button type="button" class="btn btn-warning">Refersh</button>
+                </div>
+                <form class="d-flex" role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass magnifying-glass"></i>
+                </form>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table border">
+                                <thead>
+                                    <tr>
+                                        <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                                        <th> Assigned To </th>
+                                        <th> Status </th>
+                                        <th> Due Date </th>
+                                        <th> Priority </th>
+                                        <th>Comments</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let TaskDetail of TaskDetails">
+                                    <tr>
+                                        <td>
+                                            <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                                        </td>
+                                        <td> <a> {{TaskDetail.assignedTo}} </a></td>
+                                        <td> {{ TaskDetail.statusData}}</td>
+                                        <td> {{ TaskDetail.dueData}} </td>
+                                        <td> {{ TaskDetail.priorityWise}}  </td>
+                                        <td> {{ TaskDetail.descriptionData}}  </td>
+                                        <td><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false"></a>
+                                            <ul class="dropdown-menu bg-warning text-dark">
+                                                <li><button type="button" class="btn btn-warning"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                                        Edit
+                                                    </button></li>
+                                                <li><button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal2">
+                                                        Delete
+                                                    </button></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <div style="float: left;">
+                <div class="mb-3">
+                    <input type="number" min="0" class="form-control Number" id="exampleNumberInput" placeholder="00">
+                </div>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item ">
+                        <a class="page-link"><i class="fa-solid fa-angles-up"></i> First </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#"> <i class="fa-solid fa-angle-left"></i> Prev
+                        </a></li>
+                    <li class="page-item"><a class="page-link" href="#"> 1 </a></li>
+                    <li class="page-item"><a class="page-link" href="#"> <i class="fa-solid fa-angle-right"></i> Next
+                        </a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"><i class="fa-solid fa-angles-down"></i> Last </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Edit data Form  -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 150%;">
+            <div class="modal-header bg-light">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit Task </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="partation">
+                        <div class="div2" style="padding: 0 40px 0px 25px">
+                            <div class="row">
+                                <div class="mb-3 col">
+                                    <label for="exampleFormControlInput1" class="form-label"><span
+                                            style="color:red">*</span> Assigned To </label>
+                                    <select class="form-select" aria-label="Default select example" >
+                                        <option value="User 1"> User 1 </option>
+                                        <option value="User 2"> User 2 </option>
+                                        <option value="User 3"> User 3 </option>
+                                        <option value="User 4"> User 4 </option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col">
+                                    <label for="exampleFormControlInput1" class="form-label"> <span
+                                            style="color:red">*</span> Status </label>
+                                    <select class="form-select" aria-label="Default select example" >
+                                        <option value="Completed"> Completed </option>
+                                        <option value="In Progres">In Progress</option>
+                                        <option value="Not Started">Not Started</option>
+                                    </select>
+                                </div>
+                            </div>
+                           
+                            <div class="row">
+                                <div class="mb-3 col">
+                                    <label for="exampleFormControlInput1" class="form-label"> Due Date</label>
+                                    <input type="date" class="form-control" >
+                                </div>
+                                <div class="mb-3 col">
+                                    <label for="exampleFormControlInput1" class="form-label"> <span
+                                            style="color:red">*</span> Priority </label>
+                                    <select class="form-select" aria-label="Default select example" >
+                                        <option value="Low"> Low </option>
+                                        <option value="High"> High </option>
+                                        <option value="Normal"> Normal </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label"> Description </label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                    ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer bg-light">
+                <button type="submit" class="btn bg-warning" data-bs-dismiss="modal"
+                    style="padding:6px 20px; border-radius: 2px;"> Cancel </button>
+                <button type="submit" class="btn btn-primary" style="padding:6px 20px; border-radius: 2px;"> Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Vertically centered modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-bg-danger">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"> Delete </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p> Do you want to delete Task task.name ?? </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No </button>
+                <button type="button" class="btn btn-warning"> Yes </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
