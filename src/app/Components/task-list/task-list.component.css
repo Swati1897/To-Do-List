@@ -21,3 +21,58 @@
 .Number{
     width: 80px;
 }
+
+.container-fluid{
+    padding: 0px;
+}
+.card-body{
+    padding: 5px;
+}
+table{
+    width: 100%;
+    table-layout: fixed;
+}
+
+.modal-dialog{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(11.25rem, 100%), 1fr));
+}
+.partation{
+    display: grid;
+    flex-direction: column;
+}
+@media only screen and (max-width: 600px) {
+    .container-fluid{
+        padding: 0px;
+    }
+
+    table{
+        width: 100%;
+        table-layout: fixed;
+    }
+    .modal-dialog{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(11.25rem, 60%), 1fr));
+    }
+    .modal-content{
+        width: 100%;
+    }
+
+    .modal-body{
+        padding: 5px;
+    }
+    .div2{
+        padding: 0px;
+    }
+    .row{
+        margin-left: -35px;
+    }
+    .partation{
+        display: grid;
+        flex-direction: column;
+    } 
+  }
+
+@media only screen and (min-width: 900px) {
+
+  }  

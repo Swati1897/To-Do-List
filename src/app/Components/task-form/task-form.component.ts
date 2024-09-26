@@ -21,13 +21,15 @@ export class TaskFormComponent  implements OnInit{
     this.TaskForm = this.formBuilder.group({
       assignedTo:['', [Validators.required]],
       statusData:['', [Validators.required]],
-      dueData:[''],
+      dueDate:[''],
       priorityWise:['', [Validators.required]],
       descriptionData:['']
       })
   }
   
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.onFormSubmit();
+  }
 
   onFormSubmit(){
     console.log("Form", this.TaskForm.value);
@@ -35,7 +37,7 @@ export class TaskFormComponent  implements OnInit{
     const body={
       assignedTo : this.TaskForm.value.assignedTo,
       statusData : this.TaskForm.value.statusData,
-      dueData : this.TaskForm.value.dueData,
+      dueData : this.TaskForm.value.dueDate,
       priorityWise : this.TaskForm.value.priorityWise,
       descriptionData : this.TaskForm.value.descriptionData
     };

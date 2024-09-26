@@ -15,7 +15,7 @@
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         New Task
                     </button>
-                    <button type="button" class="btn btn-warning">Refersh</button>
+                    <button type="button" class="btn btn-warning" (click)=" getData()">Refersh</button>
                 </div>
                 <form class="d-flex" role="search">
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -58,7 +58,7 @@
                                                         Edit
                                                     </button></li>
                                                 <li><button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal2">
+                                                    data-bs-target="#exampleModal2" (click)="onDelete(TaskDetail)">
                                                         Delete
                                                     </button></li>
                                             </ul>
@@ -96,10 +96,6 @@
     </div>
 </div>
 
-
-
-
-
 <!-- Edit data Form  -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -109,14 +105,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="updateTaskForm">
                     <div class="partation">
                         <div class="div2" style="padding: 0 40px 0px 25px">
                             <div class="row">
                                 <div class="mb-3 col">
-                                    <label for="exampleFormControlInput1" class="form-label"><span
-                                            style="color:red">*</span> Assigned To </label>
-                                    <select class="form-select" aria-label="Default select example" >
+                                    <label for="exampleFormControlInput1" class="form-label"><span style="color:red">*</span> Assigned To </label>
+                                    <select class="form-select" aria-label="Default select example" formControlName="assignedTo">
                                         <option value="User 1"> User 1 </option>
                                         <option value="User 2"> User 2 </option>
                                         <option value="User 3"> User 3 </option>
@@ -126,34 +121,31 @@
                                 <div class="mb-3 col">
                                     <label for="exampleFormControlInput1" class="form-label"> <span
                                             style="color:red">*</span> Status </label>
-                                    <select class="form-select" aria-label="Default select example" >
+                                    <select class="form-select" aria-label="Default select example" formControlName="statusData">
                                         <option value="Completed"> Completed </option>
                                         <option value="In Progres">In Progress</option>
                                         <option value="Not Started">Not Started</option>
                                     </select>
                                 </div>
-                            </div>
-                           
+                            </div> 
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="exampleFormControlInput1" class="form-label"> Due Date</label>
-                                    <input type="date" class="form-control" >
+                                    <input type="date" class="form-control" formControlName="dueDate">
                                 </div>
                                 <div class="mb-3 col">
                                     <label for="exampleFormControlInput1" class="form-label"> <span
                                             style="color:red">*</span> Priority </label>
-                                    <select class="form-select" aria-label="Default select example" >
+                                    <select class="form-select" aria-label="Default select example" formControlName="priorityWise">
                                         <option value="Low"> Low </option>
                                         <option value="High"> High </option>
                                         <option value="Normal"> Normal </option>
                                     </select>
                                 </div>
                             </div>
-                            <!--  -->
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label"> Description </label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                    ></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="descriptionData"></textarea>
                             </div>
                         </div>
                     </div>
@@ -163,7 +155,7 @@
             <div class="modal-footer bg-light">
                 <button type="submit" class="btn bg-warning" data-bs-dismiss="modal"
                     style="padding:6px 20px; border-radius: 2px;"> Cancel </button>
-                <button type="submit" class="btn btn-primary" style="padding:6px 20px; border-radius: 2px;"> Save
+                <button type="button" class="btn btn-primary" style="padding:6px 20px; border-radius: 2px;" (click)="onUpdateData()"> Save
                 </button>
             </div>
         </div>
@@ -184,7 +176,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No </button>
-                <button type="button" class="btn btn-warning"> Yes </button>
+                <button type="button" class="btn btn-warning" (click)="DeleteMessage()"> Yes </button>
             </div>
         </div>
     </div>
