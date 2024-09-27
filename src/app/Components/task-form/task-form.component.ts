@@ -31,7 +31,6 @@ export class TaskFormComponent  implements OnInit{
   ngOnInit(): void { }
   
   onFormSubmit(){
-    console.log("Form", this.addTaskForm.value);
         const BODY = {
           assignedTo : this.addTaskForm.value.assignedTo,
           statusData : this.addTaskForm.value.statusData,
@@ -41,8 +40,8 @@ export class TaskFormComponent  implements OnInit{
     };
 
     this.taskService.addTask(BODY).subscribe((data:any) => {
-      console.log("Add Task data:....", data);
       this.TASKRESULT = data;
+      console.log("Add Task data:....", this.TASKRESULT);
       this.addTaskForm.reset();
       this.router.navigate(['list-task'], {relativeTo: this.currentRouter})
     }, (error) => {

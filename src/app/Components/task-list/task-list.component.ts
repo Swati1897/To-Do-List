@@ -39,14 +39,12 @@ export class TaskListComponent implements OnInit{
 
   getData(){
     this.taskService.fetchTask().subscribe((data:any)=>{
-      console.log("Fetching All data in list", data);
         this.TASKDETAILS = data;
-      console.log("All Task Data,,,", this.TASKDETAILS)
+      console.log("All Task Data..", this.TASKDETAILS)
     })   
   }
 
   editProfile(data :any){
-    console.log(data); 
     this.UPDATEDATA = data;
     this.UPDATETASKFORM.patchValue(this.UPDATEDATA);
   }
@@ -69,7 +67,7 @@ export class TaskListComponent implements OnInit{
   }
 
 showMessage():void{
-  alert("UPadte data.....")
+  alert("Update data successfully !")
 }
 
   openModal(task : any):void{
