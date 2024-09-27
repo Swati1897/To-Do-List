@@ -9,16 +9,17 @@ import { TaskServiceService } from 'src/app/Services/task-service.service';
   styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent  implements OnInit{
-  TaskResult:any[] = [];
-  show: boolean = true;
-  TaskForm !:FormGroup;
+  // gobal declatation 
+  public TASKRESULT:any[] = [];
+
+  addTaskForm !:FormGroup;
 
   constructor( private taskService: TaskServiceService,
                private  formBuilder: FormBuilder,
                private router : Router,
                private currentRouter : ActivatedRoute){
 
-    this.TaskForm = this.formBuilder.group({
+    this.addTaskForm = this.formBuilder.group({
       assignedTo:['', [Validators.required]],
       statusData:['', [Validators.required]],
       dueDate:[''],
@@ -30,19 +31,19 @@ export class TaskFormComponent  implements OnInit{
   ngOnInit(): void { }
   
   onFormSubmit(){
-    console.log("Form", this.TaskForm.value);
-        const body = {
-          assignedTo : this.TaskForm.value.assignedTo,
-          statusData : this.TaskForm.value.statusData,
-          dueDate : this.TaskForm.value.dueDate,
-          priorityWise : this.TaskForm.value.priorityWise,
-          descriptionData : this.TaskForm.value.descriptionData
+    console.log("Form", this.addTaskForm.value);
+        const BODY = {
+          assignedTo : this.addTaskForm.value.assignedTo,
+          statusData : this.addTaskForm.value.statusData,
+          dueDate : this.addTaskForm.value.dueDate,
+          priorityWise : this.addTaskForm.value.priorityWise,
+          descriptionData : this.addTaskForm.value.descriptionData
     };
 
-    this.taskService.addTask(body).subscribe((data:any) => {
+    this.taskService.addTask(BODY).subscribe((data:any) => {
       console.log("Add Task data:....", data);
-      this.TaskResult = data;
-      this.TaskForm.reset();
+      this.TASKRESULT = data;
+      this.addTaskForm.reset();
       this.router.navigate(['list-task'], {relativeTo: this.currentRouter})
     }, (error) => {
       console.log("Error Occure !", error);

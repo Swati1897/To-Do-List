@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class TaskServiceService {
    
-  private TaskURL: string='http://localhost:3000/posts';
+  private taskURL: string='http://localhost:3000/posts';
 
   constructor(private http: HttpClient) { }
   
   fetchTask(){
-    return this.http.get(`${this.TaskURL}`,{
+    return this.http.get(`${this.taskURL}`,{
       headers:{
         'content-type': 'application/json',
       }
@@ -20,15 +20,15 @@ export class TaskServiceService {
   }
 
   addTask(task_data: any){
-    return this.http.post(`${this.TaskURL}`, task_data);
+    return this.http.post(`${this.taskURL}`, task_data);
     }
 
   updateTask(taskBody: any, id:number):Observable<any>{
-    return this.http.put(`${this.TaskURL}/${id}`, taskBody);
+    return this.http.put(`${this.taskURL}/${id}`, taskBody);
     }
 
   deleteTask(id :number){
-    return this.http.delete(`${this.TaskURL}/${id}`)
+    return this.http.delete(`${this.taskURL}/${id}`)
     }
  
 }

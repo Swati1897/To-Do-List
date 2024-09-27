@@ -8,19 +8,20 @@ import { TaskServiceService } from 'src/app/Services/task-service.service';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit{
-  show : boolean = true;
-  TaskDetails: any = [];
-  TaskDetail: any;
-  deleteData: any;
-  updateData: any;
-  updateAllData:any = [];
+  // gobal declatation 
+  SHOW : boolean = true;
+  TASKDETAILS: any = [];
+  TASKDETAIL: any;
+  DELETEDATA: any;
+  UPDATEDATA: any;
+  UPDATEALLDATA:any = [];
 
-  updateTaskForm! : FormGroup;
+  UPDATETASKFORM! : FormGroup;
   
   constructor(private taskService: TaskServiceService,
               private formBuilder : FormBuilder) { 
               
-              this.updateTaskForm = this.formBuilder.group({
+              this.UPDATETASKFORM = this.formBuilder.group({
                   assignedTo:[''],
                   statusData:[''],
                   dueDate:[''],
@@ -33,36 +34,36 @@ export class TaskListComponent implements OnInit{
     this.getData();
   }
   openRegistration(){
-    this.show; 
+    this.SHOW; 
   }
 
   getData(){
     this.taskService.fetchTask().subscribe((data:any)=>{
       console.log("Fetching All data in list", data);
-        this.TaskDetails = data;
-      console.log("All Task Data,,,", this.TaskDetails)
+        this.TASKDETAILS = data;
+      console.log("All Task Data,,,", this.TASKDETAILS)
     })   
   }
 
   editProfile(data :any){
     console.log(data); 
-    this.updateData = data;
-    this.updateTaskForm.patchValue(this.updateData);
+    this.UPDATEDATA = data;
+    this.UPDATETASKFORM.patchValue(this.UPDATEDATA);
   }
 
   onUpdateData():void{
-    const body = {
-      id: this.updateTaskForm.value.id,
-      assignedTo: this.updateTaskForm.value.assignedTo, 
-      statusData: this.updateTaskForm.value.statusData,
-      dueDate: this.updateTaskForm.value.dueDate,
-      priorityWise: this.updateTaskForm.value.priorityWise,
-      descriptionData: this.updateTaskForm.value.descriptionData
+    const BODY = {
+      id: this.UPDATETASKFORM.value.id,
+      assignedTo: this.UPDATETASKFORM.value.assignedTo, 
+      statusData: this.UPDATETASKFORM.value.statusData,
+      dueDate: this.UPDATETASKFORM.value.dueDate,
+      priorityWise: this.UPDATETASKFORM.value.priorityWise,
+      descriptionData: this.UPDATETASKFORM.value.descriptionData
     };
-    this.taskService.updateTask(body, this.updateData.id).subscribe((result: any)=>{
-      this.updateAllData = result;
+    this.taskService.updateTask(BODY, this.UPDATEDATA.id).subscribe((result: any)=>{
+      this.UPDATEALLDATA = result;
       this.showMessage();
-      this.updateTaskForm.reset();
+      this.UPDATETASKFORM.reset();
     });
     this.getData();
   }
@@ -72,12 +73,12 @@ showMessage():void{
 }
 
   openModal(task : any):void{
-      this.TaskDetail = task;
+      this.TASKDETAIL = task;
   }
 
- DeleteMessage(id: any):void{
+ deleteMessage(id: any):void{
     this.taskService.deleteTask(id).subscribe((data: any)=>{
-      console.log("Deletd data", this.deleteData)
+      console.log("Deletd data", this.DELETEDATA)
     })
     this.getData();
  }

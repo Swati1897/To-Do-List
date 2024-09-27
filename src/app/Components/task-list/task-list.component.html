@@ -7,7 +7,7 @@
                     <h5> Tasks </h5>
                     <p>All Tasks</p>
                 </div>
-                <p><small> {{TaskDetails.length}} records</small></p>
+                <p><small> {{TASKDETAILS.length}} records</small></p>
             </div>
             <div style="float: right;">
                 <div class="btn-group" style="margin-bottom: 6px;">
@@ -41,26 +41,26 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody *ngFor="let TaskDetail of TaskDetails">
+                                <tbody *ngFor="let TASKDETAIL of TASKDETAILS">
                                     <tr>
                                         <td>
                                             <input class="form-check-input" type="checkbox" id="flexCheckDefault">
                                         </td>
-                                        <td> <a> {{TaskDetail.assignedTo}} </a></td>
-                                        <td> {{ TaskDetail.statusData}}</td>
-                                        <td> {{ TaskDetail.dueDate}} </td>
-                                        <td> {{ TaskDetail.priorityWise}} </td>
-                                        <td> {{ TaskDetail.descriptionData}} </td>
+                                        <td> <a> {{TASKDETAIL.assignedTo}} </a></td>
+                                        <td> {{ TASKDETAIL.statusData}}</td>
+                                        <td> {{ TASKDETAIL.dueDate}} </td>
+                                        <td> {{ TASKDETAIL.priorityWise}} </td>
+                                        <td> {{ TASKDETAIL.descriptionData}} </td>
                                         <td><a class="nav-link dropdown-toggle" href="#" role="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false"></a>
                                             <ul class="dropdown-menu bg-warning text-dark">
                                                 <li><button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                                         data-bs-target="#exampleModal1"
-                                                        (click)="editProfile(TaskDetail)">
+                                                        (click)="editProfile(TASKDETAIL)">
                                                         Edit
                                                     </button></li>
                                                 <li><button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal2" (click)="openModal(TaskDetail)">
+                                                        data-bs-target="#exampleModal2" (click)="openModal(TASKDETAIL)">
                                                         Delete
                                                     </button></li>
                                             </ul>
@@ -99,7 +99,7 @@
 </div>
 
 <!-- Open New form -->
-<div *ngIf="show">
+<div *ngIf="SHOW">
     <app-task-form></app-task-form>
 </div>
 
@@ -112,7 +112,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="updateTaskForm">
+                <form [formGroup]="UPDATETASKFORM">
                     <div class="partation">
                         <div class="div2" style="padding: 0 40px 0px 25px">
                             <div class="row">
@@ -185,11 +185,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p> Do you want to delete Task <b>{{TaskDetail?.assignedTo}}</b> ?? </p>
+                <p> Do you want to delete Task <b>{{ TASKDETAIL?.assignedTo }}</b> ?? </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No </button>
-                <button type="button" class="btn btn-warning" (click)="DeleteMessage(TaskDetail.id)"> Yes </button>
+                <button type="button" class="btn btn-warning" (click)="deleteMessage(TASKDETAIL.id)"> Yes </button>
             </div>
         </div>
     </div>
