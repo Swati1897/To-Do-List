@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { TaskServiceService } from 'src/app/Services/task-service.service';
 
 @Component({
@@ -10,11 +9,11 @@ import { TaskServiceService } from 'src/app/Services/task-service.service';
 })
 export class TaskListComponent implements OnInit{
   show : boolean = true;
-  TaskDetails: any[] =[];
+  TaskDetails: any = [];
+  TaskDetail: any;
   deleteData: any;
   updateData: any;
-
-  updateAllData:any=[];
+  updateAllData:any = [];
 
   updateTaskForm! : FormGroup;
   
@@ -34,8 +33,9 @@ export class TaskListComponent implements OnInit{
     this.getData();
   }
   openRegistration(){
-    // this.show; 
+    this.show; 
   }
+
   getData(){
     this.taskService.fetchTask().subscribe((data:any)=>{
       console.log("Fetching All data in list", data);
@@ -45,14 +45,13 @@ export class TaskListComponent implements OnInit{
   }
 
   editProfile(data :any){
-    console.log(data);  // value 
+    console.log(data); 
     this.updateData = data;
     this.updateTaskForm.patchValue(this.updateData);
   }
 
   onUpdateData():void{
-    
-    const body={
+    const body = {
       id: this.updateTaskForm.value.id,
       assignedTo: this.updateTaskForm.value.assignedTo, 
       statusData: this.updateTaskForm.value.statusData,
@@ -72,18 +71,15 @@ showMessage():void{
   alert("UPadte data.....")
 }
 
+  openModal(task : any):void{
+      this.TaskDetail = task;
+  }
 
-  //////////////////////////////////
-  onDelete(data: any):void{
-    console.log("Delete Data", data);
-    this.taskService.deleteTask(data.id).subscribe((data: any)=>{
-      this.deleteData = data;
-      this.DeleteMessage();
+ DeleteMessage(id: any):void{
+    this.taskService.deleteTask(id).subscribe((data: any)=>{
+      console.log("Deletd data", this.deleteData)
     })
     this.getData();
-  }
- DeleteMessage():void{
-  alert("Delete !!!!");
  }
 
 }

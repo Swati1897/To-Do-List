@@ -21,16 +21,14 @@ export class TaskServiceService {
 
   addTask(task_data: any){
     return this.http.post(`${this.TaskURL}`, task_data);
-  }
+    }
 
   updateTask(taskBody: any, id:number):Observable<any>{
     return this.http.put(`${this.TaskURL}/${id}`, taskBody);
-}
+    }
 
   deleteTask(id :number){
     return this.http.delete(`${this.TaskURL}/${id}`)
-  }
-
-  
+    }
  
 }

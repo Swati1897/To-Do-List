@@ -11,10 +11,11 @@
             </div>
             <div style="float: right;">
                 <div class="btn-group" style="margin-bottom: 6px;">
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="openRegistration()">
                         New Task
                     </button>
-                    <button type="button" class="btn btn-warning" (click)=" getData()">Refersh</button>
+                    <button type="button" class="btn btn-warning" (click)="getData()">Refersh</button>
                 </div>
                 <form class="d-flex" role="search">
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -30,7 +31,8 @@
                             <table class="table border">
                                 <thead>
                                     <tr>
-                                        <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                                        <th><input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault"></th>
                                         <th> Assigned To </th>
                                         <th> Status </th>
                                         <th> Due Date </th>
@@ -47,17 +49,18 @@
                                         <td> <a> {{TaskDetail.assignedTo}} </a></td>
                                         <td> {{ TaskDetail.statusData}}</td>
                                         <td> {{ TaskDetail.dueDate}} </td>
-                                        <td> {{ TaskDetail.priorityWise}}  </td>
-                                        <td> {{ TaskDetail.descriptionData}}  </td>
-                                        <td><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                                aria-expanded="false"></a>
+                                        <td> {{ TaskDetail.priorityWise}} </td>
+                                        <td> {{ TaskDetail.descriptionData}} </td>
+                                        <td><a class="nav-link dropdown-toggle" href="#" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false"></a>
                                             <ul class="dropdown-menu bg-warning text-dark">
-                                                <li><button type="button" class="btn btn-warning"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal1"  (click)="editProfile(TaskDetail)">
+                                                <li><button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal1"
+                                                        (click)="editProfile(TaskDetail)">
                                                         Edit
                                                     </button></li>
                                                 <li><button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal2" (click)="onDelete(TaskDetail)">
+                                                        data-bs-target="#exampleModal2" (click)="openModal(TaskDetail)">
                                                         Delete
                                                     </button></li>
                                             </ul>
@@ -95,6 +98,11 @@
     </div>
 </div>
 
+<!-- Open New form -->
+<div *ngIf="show">
+    <app-task-form></app-task-form>
+</div>
+
 <!-- Edit data Form  -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -109,8 +117,10 @@
                         <div class="div2" style="padding: 0 40px 0px 25px">
                             <div class="row">
                                 <div class="mb-3 col">
-                                    <label for="exampleFormControlInput1" class="form-label"><span style="color:red">*</span> Assigned To </label>
-                                    <select class="form-select" aria-label="Default select example" formControlName="assignedTo">
+                                    <label for="exampleFormControlInput1" class="form-label"><span
+                                            style="color:red">*</span> Assigned To </label>
+                                    <select class="form-select" aria-label="Default select example"
+                                        formControlName="assignedTo">
                                         <option value="User 1"> User 1 </option>
                                         <option value="User 2"> User 2 </option>
                                         <option value="User 3"> User 3 </option>
@@ -120,13 +130,14 @@
                                 <div class="mb-3 col">
                                     <label for="exampleFormControlInput1" class="form-label"> <span
                                             style="color:red">*</span> Status </label>
-                                    <select class="form-select" aria-label="Default select example" formControlName="statusData">
+                                    <select class="form-select" aria-label="Default select example"
+                                        formControlName="statusData">
                                         <option value="Completed"> Completed </option>
                                         <option value="In Progres">In Progress</option>
                                         <option value="Not Started">Not Started</option>
                                     </select>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="exampleFormControlInput1" class="form-label"> Due Date</label>
@@ -135,7 +146,8 @@
                                 <div class="mb-3 col">
                                     <label for="exampleFormControlInput1" class="form-label"> <span
                                             style="color:red">*</span> Priority </label>
-                                    <select class="form-select" aria-label="Default select example" formControlName="priorityWise">
+                                    <select class="form-select" aria-label="Default select example"
+                                        formControlName="priorityWise">
                                         <option value="Low"> Low </option>
                                         <option value="High"> High </option>
                                         <option value="Normal"> Normal </option>
@@ -144,7 +156,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label"> Description </label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="descriptionData"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                    formControlName="descriptionData"></textarea>
                             </div>
                         </div>
                     </div>
@@ -154,7 +167,8 @@
             <div class="modal-footer bg-light">
                 <button type="submit" class="btn bg-warning" data-bs-dismiss="modal"
                     style="padding:6px 20px; border-radius: 2px;"> Cancel </button>
-                <button type="button" class="btn btn-primary" style="padding:6px 20px; border-radius: 2px;" (click)="onUpdateData()"> Save
+                <button type="button" class="btn btn-primary" style="padding:6px 20px; border-radius: 2px;"
+                    (click)="onUpdateData()"> Save
                 </button>
             </div>
         </div>
@@ -162,7 +176,7 @@
 </div>
 
 
-<!-- Vertically centered modal -->
+<!-- Delete Popup -->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -171,15 +185,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p> Do you want to delete Task task.name ?? </p>
+                <p> Do you want to delete Task <b>{{TaskDetail?.assignedTo}}</b> ?? </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No </button>
-                <button type="button" class="btn btn-warning" (click)="DeleteMessage()"> Yes </button>
+                <button type="button" class="btn btn-warning" (click)="DeleteMessage(TaskDetail.id)"> Yes </button>
             </div>
         </div>
     </div>
 </div>
-
-
-

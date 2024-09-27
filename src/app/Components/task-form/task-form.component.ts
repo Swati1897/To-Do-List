@@ -9,7 +9,7 @@ import { TaskServiceService } from 'src/app/Services/task-service.service';
   styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent  implements OnInit{
-  TaskResult:any[] =[];
+  TaskResult:any[] = [];
   show: boolean = true;
   TaskForm !:FormGroup;
 
@@ -27,27 +27,24 @@ export class TaskFormComponent  implements OnInit{
       })
   }
   
-  ngOnInit(): void { 
-    this.onFormSubmit();
-  }
-
+  ngOnInit(): void { }
+  
   onFormSubmit(){
     console.log("Form", this.TaskForm.value);
-
-    const body={
-      assignedTo : this.TaskForm.value.assignedTo,
-      statusData : this.TaskForm.value.statusData,
-      dueData : this.TaskForm.value.dueDate,
-      priorityWise : this.TaskForm.value.priorityWise,
-      descriptionData : this.TaskForm.value.descriptionData
+        const body = {
+          assignedTo : this.TaskForm.value.assignedTo,
+          statusData : this.TaskForm.value.statusData,
+          dueDate : this.TaskForm.value.dueDate,
+          priorityWise : this.TaskForm.value.priorityWise,
+          descriptionData : this.TaskForm.value.descriptionData
     };
 
-    this.taskService.addTask(body).subscribe((data:any)=>{
+    this.taskService.addTask(body).subscribe((data:any) => {
       console.log("Add Task data:....", data);
       this.TaskResult = data;
       this.TaskForm.reset();
-      this.router.navigate(['../view-task'], {relativeTo: this.currentRouter})
-    }, (error)=>{
+      this.router.navigate(['list-task'], {relativeTo: this.currentRouter})
+    }, (error) => {
       console.log("Error Occure !", error);
     })
   }
