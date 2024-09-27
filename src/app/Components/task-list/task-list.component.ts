@@ -9,12 +9,12 @@ import { TaskServiceService } from 'src/app/Services/task-service.service';
 })
 export class TaskListComponent implements OnInit{
   // gobal declatation 
-  SHOW : boolean = true;
-  TASKDETAILS: any = [];
-  TASKDETAIL: any;
-  DELETEDATA: any;
-  UPDATEDATA: any;
-  UPDATEALLDATA:any = [];
+  public SHOW : boolean = true;
+  public TASKDETAILS: any = [];
+  public TASKDETAIL: any;
+  public DELETEDATA: any;
+  public UPDATEDATA: any;
+  public UPDATEALLDATA:any = [];
 
   UPDATETASKFORM! : FormGroup;
   
