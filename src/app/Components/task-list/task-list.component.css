@@ -1,3 +1,7 @@
+.left{
+    float: left;
+}
+
 .checklist{
     margin: 10px;
     padding: 10px;
@@ -41,38 +45,41 @@ table{
     display: grid;
     flex-direction: column;
 }
-@media only screen and (max-width: 600px) {
-    .container-fluid{
-        padding: 0px;
-    }
 
-    table{
+.modal-content {
+    width: 100%; 
+}
+
+@media (max-width: 576px) {
+    .left{
+        width: 90%;
+    }
+    .right{
+        width: 85%;
+    }
+    .modal-content {
+        width: 100%;   
+    }
+    .modal-header {
+        padding: 10px 15px;
+    }
+    .modal-body {
+        padding: 10px;
+    }
+    .modal-body .form-control, .modal-body .form-select {
         width: 100%;
-        table-layout: fixed;
     }
-    .modal-dialog{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(11.25rem, 60%), 1fr));
+    .row {
+        display: block; 
     }
-    .modal-content{
-        width: 100%;
+    .col {
+        width: 100%; 
+        padding: 5px 0; 
     }
+    .modal-footer {
+        display: flex;
+        justify-content: space-between; 
+        padding: 10px;
+    }
+}
 
-    .modal-body{
-        padding: 5px;
-    }
-    .div2{
-        padding: 0px;
-    }
-    .row{
-        margin-left: -35px;
-    }
-    .partation{
-        display: grid;
-        flex-direction: column;
-    } 
-  }
-
-@media only screen and (min-width: 900px) {
-
-}  

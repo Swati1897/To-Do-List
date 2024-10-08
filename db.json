@@ -71,30 +71,6 @@
       "priorityWise": "High",
       "descriptionData": "this task is very important.",
       "id": 11
-    },
-    {
-      "assignedTo": "User 3",
-      "statusData": "In Progres",
-      "dueDate": "2024-09-12",
-      "priorityWise": "Normal",
-      "descriptionData": "hbskudfauy",
-      "id": 12
-    },
-    {
-      "assignedTo": "User 2",
-      "statusData": "In Progres",
-      "dueDate": "2024-09-07",
-      "priorityWise": "High",
-      "descriptionData": "hasugfw87fg8we7fg",
-      "id": 13
-    },
-    {
-      "assignedTo": "User 1",
-      "statusData": "Completed",
-      "dueDate": "2024-08-27",
-      "priorityWise": "High",
-      "descriptionData": "dfhgbgfny",
-      "id": 14
     }
   ]
 }
